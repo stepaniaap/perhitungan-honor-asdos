@@ -27,7 +27,7 @@
                 <div class="form-group">
                 <select name="role" class="form-control">
                     <option value="0">--Pilih Role--</option>
-                    <option value="mahasiswa">Mahasiswa</option>
+                    <option value="asdos">Asisten Dosen</option>
                     <option value="admin">Admin</option>
                     <option value="biro2">Biro</option>
                 </select>

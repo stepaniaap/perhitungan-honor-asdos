@@ -3,7 +3,7 @@
   <ul>
     <li><a {{$key=='home_admin'?'active':''}} href="/home_admin">Data Asisten Dosen</a></li>
     <li><a {{$key=='data_matakuliah'?'active':''}} href="/data_matakuliah">Data Matakuliah</a></li>
-    <li><a {{$key=='validasi_kehadiran'?'active':''}} href="/validasi_kehadiran">Data Presensi</a></li>
+    <li><a {{$key=='data_presensi'?'active':''}} href="/data_presensi">Data Presensi</a></li>
    <!-- <li><a {{$key=='tambah_mhs'?'active':''}} href="/tambah_mhs">Tambah Mahasiswa</a></li>
     <li><a {{$key=='tambah_matkul'?'active':''}} href="/tambah_matkul">Tambah Matakuliah</a></li>-->
     <li><a {{$key=='logout'?'active':''}} href="/logout">Logout</a></li>
@@ -46,9 +46,10 @@
         
 <table class="table">
     <thead class="thead-dark">
+      
       <tr>
         <!-- <th scope="col">#</th> -->
-        <th scope="col">ID</th>
+        <th scope="col">No</th>
         <th scope="col">Kode</th>
         <th scope="col">Nama</th>
         <th scope="col">Bobot SKS</th>
@@ -62,7 +63,7 @@
     <tbody>
     @foreach ($mk as $m)
                 <tr>
-                  <td>{{$m->id}}</td>
+                  <td>{{$loop->iteration}}</td>
                   <td>{{$m->kode_mk}}</td>
                   <td>{{$m->nama_mk}}</td>
                   <td>{{$m->bobot_sks}}</td>
@@ -71,10 +72,10 @@
                   <td>{{$m->waktu}}</td>
                   <td>{{$m->dosen_pengampu}}</td>
                   <td>
-                    <a href="/data_matakuliah/edit_mk/{{$m->id}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                    <a href="/data_matakuliah/edit_mk/{{$m->id_makul}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
 
                     
-                    <a href="/data_matakuliah/delete_mk/{{$m->id}}" class="btn btn-danger" onclick="return confirm('Apakah ada yakin ingin menghapus?')">
+                    <a href="/data_matakuliah/delete_mk/{{$m->id_makul}}" class="btn btn-danger" onclick="return confirm('Apakah ada yakin ingin menghapus?')">
                       <i class="bi bi-trash-fill"></i></i></a>
                   </td>
                 </tr>

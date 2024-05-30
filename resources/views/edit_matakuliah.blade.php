@@ -30,43 +30,18 @@
     <div class="card mt-4">
         <div class="card-header"><strong>Edit Data Matakuliah</strong></div>
         <div class="card-body">
-            <form action="{{ route('update_mhs', ['id' => $asd->id]) }}" method="POST">
+            <form action="{{ route('update_matakuliah', ['id' => $asd->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="form-group">
-                    <label>NIM</label>
-                    <input type="text" name="username" class="form-control" value="{{$asd->username}}"readonly>
-                </div>
     
-                <div class="form-group">
-                    <label>Nama Lengkap</label>
-                    <input type="text" name="nama_lengkap" class="form-control" value="{{$asd->nama_lengkap}}"readonly>
-                </div>
-    
-                <label>Bank Tujuan</label>
-                <div class="form-check">
-                    <input type="radio" name="bank" id="bank" class="form-check-input" value="BCA"{{($asd->bank == 'BCA')?'checked':''}}>
-                    <label>BCA</label>
-                </div>
-    
-                <div class="form-check">
-                    <input type="radio" name="bank" id="bank" class="form-check-input" value="BNI"{{($asd->bank == 'BNI')?'checked':''}}>
-                    <label>BNI</label>
-                </div>
-    
-                <div class="form-check">
-                    <input type="radio" name="bank" id="bank" class="form-check-input" value="BRI"{{($asd->bank == 'BRI')?'checked':''}}>
-                    <label>BRI</label>
-                </div>
-    
-                <div class="form-check">
-                    <input type="radio" name="bank" id="bank" class="form-check-input" value="Mandiri"{{($asd->bank == 'Mandiri')?'checked':''}}>
-                    <label>Mandiri</label>
-                </div>
-    
-                <div class="form-group">
-                    <label>No Rekening</label>
-                    <input type="text" name="no_rek" id="no_rek" class="form-control" value="{{$asd->no_rek}}">
+               <!-- Dropdown untuk matakuliah -->
+    <label>Matakuliah</label>
+    <div class="form-group">
+        <select name="matakuliah" id="matakuliah">
+            @foreach ($matakuliahs as $matakuliah)
+                <option value="{{ $matakuliah->id_makul }}">{{ $matakuliah->nama_mk}}</option>
+            @endforeach
+        </select>
     </div>
                      <div class="form-group mt-4">
                     <button type="submit" role="button" class="btn btn-primary">Submit</button>
@@ -83,4 +58,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
-

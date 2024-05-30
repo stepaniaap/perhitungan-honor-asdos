@@ -13,7 +13,7 @@
 <div class="card mt-4">
     <center><div class="card-header"><strong>Tambah Data Mata Kuliah</strong></div></center>
     <div class="card-body">
-        <form action="/data_matakuliah/save_mk" method="POST">
+        <form method="POST" action="/data_matakuliah/save_mk">
             @csrf
             <div class="form-group">
                 <label>Kode Mata Kuliah</label>

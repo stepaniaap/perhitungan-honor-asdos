@@ -8,6 +8,7 @@ class Matakuliah extends Model
 {
 
     protected $table = 'matakuliah';
+    protected $primaryKey = 'id_makul';
 
     protected $fillable = [
         'kode_mk',
@@ -18,4 +19,12 @@ class Matakuliah extends Model
         'waktu',
         'dosen_pengampu',
     ];
+
+    public function pengambilans()
+{
+    return $this->hasMany(Pengambilan::class, 'id_makul');
+}
+
+
+
 }

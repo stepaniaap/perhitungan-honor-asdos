@@ -15,15 +15,19 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'id',
+    protected $primaryKey = 'id';
+     protected $fillable = [
+        'username',
         'nama_lengkap',
         'no_tlp',
         'email',
-        'username',
         'password',
         'role',
+        'nim',
+        'bank',
+        'no_rek',
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -42,4 +46,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function matakuliah()
+{
+    return $this->hasMany(matakuliah::class, 'id_makul');
+}
+
+public function pengambilan()
+{
+    return $this->belongsTo(Pengambilan::class, 'id_pengambilan');
+}
+
+public function pengambilans()
+{
+    return $this->hasMany(Pengambilan::class, 'id');
+}
+
+public function presensi()
+{
+    return $this->hasMany(Presensi::class, 'id_presensi');
+}
+
 }

@@ -3,9 +3,7 @@
 <ul>
   <li><a {{$key=='home_admin'?'active':''}} href="/home_admin">Data Asisten Dosen</a></li>
   <li><a {{$key=='data_matakuliah'?'active':''}} href="/data_matakuliah">Data Matakuliah</a></li>
-  <li><a {{$key=='validasi_kehadiran'?'active':''}} href="/validasi_kehadiran">Data Presensi</a></li>
- <!-- <li><a {{$key=='tambah_mhs'?'active':''}} href="/tambah_mhs">Tambah Mahasiswa</a></li>
-  <li><a {{$key=='tambah_matkul'?'active':''}} href="/tambah_matkul">Tambah Matakuliah</a></li>-->
+  <li><a {{$key=='data_presensi'?'active':''}} href="/data_presensi">Data Presensi</a></li>
   <li><a {{$key=='logout'?'active':''}} href="/logout">Logout</a></li>
 </ul>
 @endsection
@@ -43,31 +41,31 @@
 <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">ID</th>
+        <!--<th scope="col">ID</th>-->
+        <th scope="col">No</th>
         <th scope="col">NIM</th>
         <th scope="col">Nama</th>
         <th scope="col">Bank</th>
         <th scope="col">No Rekening</th>
         <th scope="col">Matakuliah</th>
-        <th scope="col">Matakuliah 2</th>
         <th scope="col">Aksi</th>
       </tr>
     </thead>
     <tbody>
-    @foreach ($asd as $a)
+    @foreach ($data as $a)
                 <tr>
-                  <td>{{$a->id}}</td>
-                  <td>{{$a->nim}}</td>
-                  <td>{{$a->nama}}</td>
+                  <td>{{$loop->iteration}}</td>
+                  <td>{{$a->username}}</td>
+                  <td>{{$a->nama_lengkap}}</td>
                   <td>{{$a->bank}}</td>
                   <td>{{$a->no_rek}}</td>
-                  <td>{{$a->matakuliah}}</td>
-                  <td>{{$a->matakuliah2}}</td>
+                  <td>{{$a->nama_mk}}</td>
                   <td>
-                    <a href="/home_admin/edit_mhs/{{$a->id}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-
+                    <a href="{{ route('edit_mhs', ['id' => $a->id]) }}" class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i> Edit Mahasiswa</a>
+                    {{-- <a href="{{ route('edit_mhs', ['id' => Auth::id()]) }}">Edit</a> --}}
+                    <a href="{{ route('edit_matakuliah', ['id' => $a->id]) }}"class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i> Edit Matakuliah</a>
                     
-                    <a href="/home_admin/delete_mhs/{{$a->id}}" class="btn btn-danger" onclick="return confirm('Apakah ada yakin ingin menghapus?')">
+                    <a ref="{{ route('delete_mhs', ['id' => $a->id]) }}" class="btn btn-primary btn-sm" onclick="return confirm('Apakah ada yakin ingin menghapus?')">
                       <i class="bi bi-trash-fill"></i></i></a>
                   </td>
                 </tr>

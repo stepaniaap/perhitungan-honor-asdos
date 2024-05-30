@@ -11,7 +11,21 @@
 @endsection
 
 @section('hero')
-<h2><center>Data Presensi</center></h2>
+<h2><center>Validasi Data Presensi</center></h2>
 
+<!-- admin/presensi/index.blade.php -->
+@foreach ($presensiList as $presensi)
+    <p>Matakuliah: {{ $presensi->matakuliah->nama_mk }}</p>
+    <p>Asisten Dosen: {{ $presensi->asdos->nama }}</p>
+    <p>Tanggal Presensi: {{ $presensi->created_at->format('Y-m-d') }}</p>
+    <p>Waktu Check-in: {{ $presensi->check_in ? $presensi->check_in->format('H:i:s') : 'Belum check-in' }}</p>
+    <p>Waktu Check-out: {{ $presensi->check_out ? $presensi->check_out->format('H:i:s') : 'Belum check-out' }}</p>
+    <p>Status: {{ $presensi->validated ? 'Valid' : 'Belum divalidasi' }}</p>
+    <form action="/home_admin/presensi/validate/{{ $presensi->id }}" method="post">
+        @csrf
+        <button type="submit" class="btn btn-primary">Validasi</button>
+    </form>
+    <hr>
+@endforeach
   
 @endsection

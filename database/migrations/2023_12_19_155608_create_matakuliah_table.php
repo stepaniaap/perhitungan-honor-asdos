@@ -14,17 +14,18 @@ class CreateMatakuliahTable extends Migration
     public function up()
     {
         Schema::create('matakuliah', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->char('kode_mk',8);
-            $table->string('nama_mk',100);
-            $table->integer('bobot_sks');
-            $table->char('grup',5);
-            $table->string('ruang',100);
-            $table->string('waktu',100);
-            $table->string('dosen_pengampu',100);
+            $table->bigIncrements('id_makul');
+            $table->char('kode_mk',8)->nullable();
+            $table->string('nama_mk',100)->nullable();
+            $table->integer('bobot_sks')->nullable();
+            $table->char('grup',5)->nullable();
+            $table->string('ruang',100)->nullable();
+            $table->string('waktu',100)->nullable();
+            $table->string('dosen_pengampu',100)->nullable();
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

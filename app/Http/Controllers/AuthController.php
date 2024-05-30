@@ -22,6 +22,7 @@ class AuthController extends Controller
             'password'=> bcrypt($request->password),
             'role'=> $request->role
         ]);
+
         return redirect('login')->with('flash', 'YEY BERHASIL')->with('flash_type', 'success');
     }
 
@@ -40,7 +41,7 @@ class AuthController extends Controller
         ];
         if(Auth::attempt($datalogin)){ 
             //hak akses
-            if(Auth::user()->role == 'mahasiswa'){
+            if(Auth::user()->role == 'asdos'){
                 return redirect('/halaman_asdos');
             } 
             elseif(Auth::user()->role == 'admin'){
